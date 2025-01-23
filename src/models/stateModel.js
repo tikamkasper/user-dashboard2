@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 
 const stateSchema = new mongoose.Schema(
   {
-    countryName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Country",
-    },
-    stateName: {
+    countries: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Country",
+      },
+    ],
+    state_name: {
       type: String,
       required: [true, "State name is required !"],
     },

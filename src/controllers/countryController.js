@@ -3,8 +3,8 @@ const { Country } = require("../models/countryModel.js");
 //create country
 exports.createCountry = async (req, res) => {
   try {
-    const { countryName } = req.body;
-    const country = await Country.create({ countryName });
+    const { country_name } = req.body;
+    const country = await Country.create({ country_name });
     res.status(201).json({ success: true, country });
   } catch (error) {
     res.status(500).json({ success: false });

@@ -2,15 +2,19 @@ const mongoose = require("mongoose");
 
 const citySchema = new mongoose.Schema(
   {
-    countryName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Country",
-    },
-    stateName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "State",
-    },
-    cityName: {
+    countries: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Country",
+      },
+    ],
+    states: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "State",
+      },
+    ],
+    city_name: {
       type: String,
       required: [true, "City name is required !"],
     },

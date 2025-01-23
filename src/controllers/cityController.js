@@ -3,8 +3,8 @@ const { City } = require("../models/cityModel.js");
 //create city
 exports.createCity = async (req, res) => {
   try {
-    const { cityName } = req.body;
-    const city = await City.create({ cityName });
+    const { city_name } = req.body;
+    const city = await City.create({ city_name });
     res.status(201).json({ success: true, city });
   } catch (error) {
     res.status(500).json({ success: false });

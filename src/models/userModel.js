@@ -2,23 +2,29 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    countryName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Country",
-    },
-    stateName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "State",
-    },
-    cityName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "City",
-    },
-    userName: {
+    countries: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Country",
+      },
+    ],
+    states: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "State",
+      },
+    ],
+    cities: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "City",
+      },
+    ],
+    user_name: {
       type: String,
       required: [true, "User name is required !"],
     },
-    email: {
+    user_email: {
       type: String,
       required: [true, "Email is required!"],
     },

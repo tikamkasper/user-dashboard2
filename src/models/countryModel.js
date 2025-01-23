@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const countrySchema = new mongoose.Schema(
   {
-    countryName: {
+    country_name: {
       type: String,
-      required: [true, "Country name is required !"],
+      required: [true, "Country name is required!"],
     },
   },
   { timestamps: true }
