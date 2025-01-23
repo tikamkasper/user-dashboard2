@@ -23,3 +23,17 @@ exports.getAllUser = async (req, res) => {
     res.status(500).json({ success: false });
   }
 };
+
+//get user by id
+exports.getUserById = async (req, res) => {
+  // console.log("==", req.params);
+  try {
+    const user = await User.findById(req.params.id)
+      .populate("countries")
+      .populate("states")
+      .populate("cities");
+    res.status(200).json({ success: true, user });
+  } catch (error) {
+    res.status(500).json({ success: false });
+  }
+};
