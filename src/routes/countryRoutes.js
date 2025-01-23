@@ -6,7 +6,7 @@ const {
 
 const router = express.Router();
 
-router.post("/countries", createCountry);
-router.get("/countries", getAllCountry);
+router.post("/", createCountry);
+router.get("/", getAllCountry);
 
 module.exports = router;

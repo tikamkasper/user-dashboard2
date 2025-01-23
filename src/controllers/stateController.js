@@ -1,22 +1,22 @@
-const { Country } = require("../models/countryModel.js");
+const { State } = require("../models/stateModel.js");
 
 //create country
-exports.createCountry = async (req, res) => {
+exports.createState = async (req, res) => {
   try {
-    const { countryName } = req.body;
-    const country = await Country.create({ countryName });
-    res.status(201).json(country);
+    const { stateName } = req.body;
+    const state = await State.create({ stateName });
+    res.status(201).json({ success: true, state });
   } catch (error) {
     res.status(500).json({ success: false });
   }
 };
 
 //get all country
-exports.getAllCountry = async (req, res) => {
+exports.getAllState = async (req, res) => {
   try {
-    const countries = await Country.find();
-    res.status(200).json(countries);
+    const states = await State.find();
+    res.status(200).json({ success: true, states });
   } catch (error) {
-    res.status(500).json({ success: true });
+    res.status(500).json({ success: false });
   }
 };

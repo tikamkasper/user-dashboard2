@@ -5,7 +5,7 @@ exports.createCountry = async (req, res) => {
   try {
     const { countryName } = req.body;
     const country = await Country.create({ countryName });
-    res.status(201).json(country);
+    res.status(201).json({ success: true, country });
   } catch (error) {
     res.status(500).json({ success: false });
   }
@@ -15,8 +15,8 @@ exports.createCountry = async (req, res) => {
 exports.getAllCountry = async (req, res) => {
   try {
     const countries = await Country.find();
-    res.status(200).json(countries);
+    res.status(200).json({ success: true, countries });
   } catch (error) {
-    res.status(500).json({ success: true });
+    res.status(500).json({ success: false });
   }
 };
