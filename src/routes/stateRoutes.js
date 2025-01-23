@@ -1,12 +1,12 @@
 const express = require("express");
 const {
-  getAllState,
+  getAllStates,
   createState,
 } = require("../controllers/stateController.js");
 
 const router = express.Router();
 
 router.post("/", createState);
-router.get("/", getAllState);
+router.get("/", getAllStates);
 
 module.exports = router;

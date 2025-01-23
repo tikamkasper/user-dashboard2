@@ -1,39 +1,31 @@
 const { User } = require("../models/userModel.js");
 
-//create user
+// Create user
 exports.createUser = async (req, res) => {
   try {
-    const { user_name, user_email } = req.body;
-    const user = await User.create({ user_name, user_email });
+    const { user_name, user_email, country_id, state_id, city_id } = req.body; // Pass references
+    const user = await User.create({
+      user_name,
+      user_email,
+      countries: country_id,
+      states: state_id,
+      cities: city_id,
+    });
     res.status(201).json({ success: true, user });
   } catch (error) {
-    res.status(500).json({ success: false });
+    res.status(500).json({ success: false, error: error.message });
   }
 };
 
-//get all user
-exports.getAllUser = async (req, res) => {
+// Get all users
+exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find()
-      .populate("countries")
-      .populate("states")
-      .populate("cities");
+      .populate("countries") // Populate countries
+      .populate("states") // Populate states
+      .populate("cities"); // Populate cities
     res.status(200).json({ success: true, users });
   } catch (error) {
-    res.status(500).json({ success: false });
-  }
-};
-
-//get user by id
-exports.getUserById = async (req, res) => {
-  // console.log("==", req.params);
-  try {
-    const user = await User.findById(req.params.id)
-      .populate("countries")
-      .populate("states")
-      .populate("cities");
-    res.status(200).json({ success: true, user });
-  } catch (error) {
-    res.status(500).json({ success: false });
+    res.status(500).json({ success: false, error: error.message });
   }
 };

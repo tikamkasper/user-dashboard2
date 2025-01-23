@@ -6,6 +6,7 @@ const stateSchema = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Country",
+        required: [true, "Country ID is required !"],
       },
     ],
     state_name: {

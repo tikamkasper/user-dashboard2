@@ -1,12 +1,12 @@
 const express = require("express");
 const {
   createCountry,
-  getAllCountry,
+  getAllCountries,
 } = require("../controllers/countryController.js");
 
 const router = express.Router();
 
 router.post("/", createCountry);
-router.get("/", getAllCountry);
+router.get("/", getAllCountries);
 
 module.exports = router;
