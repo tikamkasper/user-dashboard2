@@ -24,7 +24,8 @@ exports.getAllUsers = async (req, res) => {
       .populate("countries") // Populate countries
       .populate("states") // Populate states
       .populate("cities"); // Populate cities
-    res.status(200).json({ success: true, users });
+    const usersCount = users.length;
+    res.status(200).json({ success: true, usersCount, users });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
